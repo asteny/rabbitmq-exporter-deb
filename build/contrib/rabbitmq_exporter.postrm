@@ -1,0 +1,35 @@
+#!/bin/bash
+
+set -e
+
+USER="rabbitmq_exporter"
+GROUP="rabbitmq_exporter"
+DESC="Prometheus exporter for RabbitMQ metrics. Data is scraped by prometheus"
+
+
+case "$1" in
+  remove)
+    /bin/systemctl stop rabbitmq_exporter
+  ;;
+
+  upgrade)
+    /bin/systemctl restart rabbitmq_exporter
+  ;;
+
+  purge)
+    /bin/rm -fr /usr/bin/rabbitmq_exporter /etc/rabbitmq_exporter.environment
+  ;;
+
+  remove|failed-upgrade|abort-install|abort-upgrade|disappear)
+    /bin/systemctl restart rabbitmq_exporter
+    exit 0
+  ;;
+
+  *)
+    echo "postrm called with unknown argument \`$1'" >&2
+    exit 1
+  ;;
+
+esac
+
+exit 0

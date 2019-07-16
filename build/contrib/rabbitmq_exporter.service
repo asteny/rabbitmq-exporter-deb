@@ -1,0 +1,22 @@
+[Unit]
+Description=Prometheus exporter for RabbitMQ metrics. Data is scraped by prometheus
+Documentation=https://github.com/kbudde/rabbitmq_exporter
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=rabbitmq_exporter
+Group=rabbitmq_exporter
+Restart=always
+RestartSec=5
+StartLimitInterval=0
+StartLimitBurst=99999
+EnvironmentFile=/etc/rabbitmq_exporter.environment
+ExecStart=/usr/bin/rabbitmq_exporter
+ExecReload=/bin/kill -HUP $MAINPID
+KillSignal=SIGINT
+StandardOutput=null
+
+[Install]
+WantedBy=multi-user.target
