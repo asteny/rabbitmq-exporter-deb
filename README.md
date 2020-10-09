@@ -12,7 +12,7 @@ Installation
 apt-get update
 apt-get install gnupg2 apt-transport-https ca-certificates -y
 apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-echo "deb https://dl.bintray.com/asten/rabbitmq_exporter xenial main" | tee -a /etc/apt/sources.list.d/rabbitmq_exporter.list
+echo "deb https://dl.bintray.com/asten/rabbitmq_exporter ubuntu main" | tee -a /etc/apt/sources.list.d/rabbitmq_exporter.list
 apt-get update
 apt-get install rabbitmq-exporter -y
 

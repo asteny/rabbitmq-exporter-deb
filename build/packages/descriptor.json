@@ -15,17 +15,17 @@
     },
 
     "version": {
-        "name": "1.0.0-RC6.1",
+        "name": "1.0.0-RC7",
         "desc": "",
         "released": "2019-05-25",
-        "vcs_tag": "v1.0.0-RC6.1",
+        "vcs_tag": "v1.0.0-RC7",
         "gpgSign": true
     },
 
     "files":
     [{"includePattern": "build/packages/(.*\.deb)", "uploadPattern": "pool/main/r/rabbitmq_exporter/$1",
     "matrixParams": {
-        "deb_distribution": "xenial",
+        "deb_distribution": "ubuntu",
         "deb_component": "main",
         "deb_architecture": "amd64",
         "override": 1 }
