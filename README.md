@@ -1,18 +1,19 @@
-[![Build Status](https://travis-ci.org/asteny/rabbitmq-exporter-deb.svg?branch=master)](https://travis-ci.org/asteny/rabbitmq-exporter-deb)[![Download](https://api.bintray.com/packages/asten/rabbitmq_exporter/rabbitmq_exporter/images/download.svg)](https://bintray.com/asten/rabbitmq_exporter/rabbitmq_exporter/_latestVersion)
+![build](https://github.com/asteny/rabbitmq-exporter-deb/actions/workflows/build.yml/badge.svg)
 
 
 RabbitMQ exporter deb
 ==========================
 
-Deb package with [RabbitMQ exporter](https://github.com/kbudde/rabbitmq_exporter) for Ubuntu (16.04 - 18.04)
+Deb package with [RabbitMQ exporter](https://github.com/kbudde/rabbitmq_exporter) for Ubuntu (xenial, bionic,focal)
 
 Installation
 ------------
 ```bash
 apt-get update
 apt-get install gnupg2 apt-transport-https ca-certificates -y
-apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 379CE192D401AB61
-echo "deb https://dl.bintray.com/asten/rabbitmq_exporter ubuntu main" | tee -a /etc/apt/sources.list.d/rabbitmq_exporter.list
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys EA8AECDE414187DB
+apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys A57ED69D49D1012A
+printf "deb https://packagecloud.io/the_asten/prometheus/ubuntu/ focal main \ndeb-src https://packagecloud.io/the_asten/prometheus/ubuntu/ focal main" | tee -a /etc/apt/sources.list.d/prometheus.list
 apt-get update
 apt-get install rabbitmq-exporter -y
 
@@ -21,5 +22,7 @@ apt-get install rabbitmq-exporter -y
 Rabbitmq_exporter uses environment variables for configuration.
 Environment file path: /etc/rabbitmq_exporter.environment
 
-[All package versions in Bintray repo](https://bintray.com/asten/rabbitmq_exporter/rabbitmq_exporter)
+Special thanks for the ability to use the package repository for open source projects - :rocket: https://packagecloud.io :rocket:
+
+[All package versions in packagecloud.io repo](https://packagecloud.io/the_asten/prometheus)
 -------------------------------------------------------------------------------

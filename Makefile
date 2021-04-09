@@ -1,10 +1,6 @@
-VERSION = 1.0.0-RC7
-ITERATION = 0
-UID ?= 0
-
 all: build
 
-build: download
+build: compress
 	chmod -Rv 644 build/contrib/
 	fpm -s dir -f -t deb \
 		-n rabbitmq_exporter \
@@ -17,6 +13,9 @@ build: download
 		build/contrib/rabbitmq_exporter.service=/lib/systemd/system/rabbitmq_exporter.service \
 		build/contrib/rabbitmq_exporter.environment=/etc/rabbitmq_exporter.environment \
 		build/contrib/rabbitmq_exporter.preset=/usr/lib/systemd/system-preset/rabbitmq_exporter.preset
+
+compress: download
+	upx /tmp/rabbitmq_exporter/rabbitmq_exporter
 
 download:
 	cd /tmp && curl -Lo rabbitmq_exporter.tar.gz https://github.com/kbudde/rabbitmq_exporter/releases/download/v$(VERSION)/rabbitmq_exporter-$(VERSION).linux-amd64.tar.gz
