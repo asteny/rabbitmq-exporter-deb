@@ -19,5 +19,5 @@ compress: download
 
 download:
 	mkdir -p /tmp/rabbitmq_exporter
-	cd /tmp/rabbitmq_exporter && curl -Lo rabbitmq_exporter.tar.gz https://github.com/kbudde/rabbitmq_exporter/releases/download/v$(VERSION)/rabbitmq_exporter_$(VERSION)_linux_amd64.tar.gz
+	curl -Lo /tmp/rabbitmq_exporter/rabbitmq_exporter.tar.gz https://github.com/kbudde/rabbitmq_exporter/releases/download/v$(VERSION)/rabbitmq_exporter_$(VERSION)_linux_amd64.tar.gz
 	cd /tmp/rabbitmq_exporter && tar -xvf /tmp/rabbitmq_exporter/rabbitmq_exporter.tar.gz
